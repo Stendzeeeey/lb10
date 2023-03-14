@@ -1,0 +1,36 @@
+Дана матрица размера M × N. В каждой ее строке найти количество элементов, меньших среднего арифметического всех элементов этой строки.
+
+
+
+#include "pt4.h"
+using namespace std;
+
+void Solve()
+{
+    Task("Matrix29");
+	int m, n, i, j, k;
+	float** A, s;
+	pt >> m >> n;
+	A = new float* [m];
+	for (i = 0; i < m; i++) {
+		A[i] = new float[n];
+	}
+	for (i = 0; i < m; i++) {
+		for (j = 0; j < n; j++) {
+			pt >> A[i][j];
+		}
+	}
+	for (i = 0; i < m; i++) {
+		s = 0; k = 0;
+		for (j = 0; j < n; j++) {
+			s += A[i][j];
+		}
+		s /= n;
+		for (j = 0; j < n; j++) {
+			if (A[i][j] < s) {
+				k++;
+			}
+		}
+		pt << k;
+	}
+}
